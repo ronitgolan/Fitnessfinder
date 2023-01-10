@@ -1,0 +1,15 @@
+{
+  "name": "gis",
+  "version": "1.0.0",
+  "main": "dbAccess.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^9.9.4"
+  },
+  "description": ""
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to Fitnessfinder</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-size: 110%;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        color: rgb(255, 255, 255);
+        text-shadow: 0 0 20px rgba(0, 0, 0, 1);
+        background-image: url("climb.jpg");
+        background-size: 100%;
+        background-position-x: 20%;
+      }
+
+      #map {
+        position: absolute;
+        top: 70px;
+        bottom: 0;
+        left: 32%;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Choose Hotel</h1>
+    <div id="map">
+      <iframe
+        src="mapbox.html"
+        frameborder="100"
+        width="500px"
+        height="98%"
+      ></iframe>
+    </div>
+  </body>
+</html>

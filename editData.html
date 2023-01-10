@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to Find Hotel</title>
+    <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js"></script>
+    <script type="module">
+      import { initEditData, editData } from "./dbAccess.js";
+      window.onload = function () {
+        initEditData();
+      };
+      window.editData = editData;
+      window.moveToMap = moveToMap;
+    </script>
+  </head>
+  <body>
+    <div class="bgim"></div>
+    <div class="editpage" position="absolute">
+      <link rel="stylesheet" href="editpage.css" />
+      <br />
+      <h1>Edit Hotels details</h1>
+      <label for="hotelN">Choose hotel:</label>
+      <div class="custom-select" style="width: 600px">
+        <select name="trackType" id="hotelName" multiple>
+          <option value="Golden crown">Golden crown</option>
+          <option value="Club hotel">Club hotel</option>
+          <option value="The Odette">The Odette</option>
+          <option value="West all suites">West all suites</option>
+          <option value="Kinneret beach mansion">Kinneret beach mansion</option>
+          <option value="Loft pop art tlv">Loft pop art TLV</option>
+        </select>
+      </div>
+      <br />
+      <label for="Details">Details:</label>
+      <input
+        type="text"
+        name="u"
+        placeholder="Name"
+        required="required"
+        id="name"
+      />
+      <input
+        type="text"
+        name="u"
+        placeholder="Price"
+        required="required"
+        id="price"
+      />
+      <input
+        type="text"
+        name="u"
+        placeholder="City"
+        required="required"
+        id="city"
+      />
+      <input
+        type="text"
+        name="u"
+        placeholder="Telephone"
+        required="required"
+        id="telephone"
+      />
+      <br /><br />
+      <button
+        onclick="editData()"
+        type="submit"
+        id="editData"
+        class="btn btn-primary btn-block btn-large"
+      >
+        Edit
+      </button>
+      <br /><br />
+      <button
+        onclick="moveToMap()"
+        type="submit"
+        id="signUp"
+        class="btn btn-primary btn-block btn-large"
+      >
+        Map
+      </button>
+    </div>
+  </body>
+</html>

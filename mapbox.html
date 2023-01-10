@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to Fitnessfinder</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js"></script>
+
+  <body>
+    <div id="map">
+      <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+        import {
+          getAuth,
+          createUserWithEmailAndPassword,
+          signInWithEmailAndPassword,
+        } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+        import {
+          getDatabase,
+          set,
+          ref,
+          update,
+          onValue,
+        } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+
+        mapboxgl.accessToken =
+          "pk.eyJ1IjoidGFtYXppMTQ1MSIsImEiOiJja3N1NDQydmswZnEwMndzMnlvY3U0NnNwIn0.uIvF4ZndsllN1CpquYPJng";
+        const map = new mapboxgl.Map({
+          container: "map", // container ID
+          style: "mapbox://styles/mapbox/streets-v11", // style URL
+          center: [35.166361, 31.256611], // starting position [lng, lat]
+          zoom: 6.3, // starting zoom
+        });
+
+        map.on("mouseleave", "places", () => {
+          map.getCanvas().style.cursor = "";
+          popup.remove();
+        });
+        var firebaseConfig = {
+         apiKey: "AIzaSyAcRSTL_2PQe-swVHHdqvTL3b5leFHKVi8",
+         authDomain: "fitnessfinder-95470.firebaseapp.com",
+         projectId: "fitnessfinder-95470",
+         storageBucket: "fitnessfinder-95470.appspot.com",
+         messagingSenderId: "440374090039",
+         appId: "1:440374090039:web:359e863abcfb16fdd0a2b2",
+         measurementId: "G-HX3YZR7092"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        var dbClubHotel = ref(database, "hotels/" + "Club hotel");
+        onValue(dbClubHotel, (snapshot) => {
+          const data = snapshot.val();
+          var price = data.Price;
+          var name = data.Name;
+          var city = data.City;
+          var phone = data.Telephone;
+
+          const newMark = new mapboxgl.Marker()
+            .setLngLat([34.9519, 29.5577])
+            .setPopup(
+              new mapboxgl.Popup().setHTML(
+                "Name: " +
+                  name +
+                  "<br>" +
+                  "City: " +
+                  city +
+                  "<br>" +
+                  "Price: " +
+                  price +
+                  "<br>" +
+                  "Phone: " +
+                  phone +
+                  "<br>" +
+                  '<img width="150" height="150" src="ClubHotel.jpg"/>'
+              )
+            )
+            .addTo(map);
+        });
+
+        var dbGoldenCorwn = ref(database, "hotels/" + "Golden crown");
+        onValue(dbGoldenCorwn, (snapshot) => {
+          const data = snapshot.val();
+          var price = data.Price;
+          var name = data.Name;
+          var city = data.City;
+          var phone = data.Telephone;
+
+          const newMark = new mapboxgl.Marker()
+            .setLngLat([34.989571, 32.794044])
+            .setPopup(
+              new mapboxgl.Popup().setHTML(
+                "Name: " +
+                  name +
+                  "<br>" +
+                  "City: " +
+                  city +
+                  "<br>" +
+                  "Price: " +
+                  price +
+                  "<br>" +
+                  "Phone: " +
+                  phone +
+                  "<br>" +
+                  '<img width="150" height="150" src="goldenCrown.jpg"/>'
+              )
+            )
+            .addTo(map);
+        });
+
+        var dbKinneretBeach = ref(
+          database,
+          "hotels/" + "Kinneret beach mansion"
+        );
+        onValue(dbKinneretBeach, (snapshot) => {
+          const data = snapshot.val();
+          var price = data.Price;
+          var name = data.Name;
+          var city = data.City;
+          var phone = data.Telephone;
+
+          const newMark = new mapboxgl.Marker()
+            .setLngLat([35.531, 32.7959])
+            .setPopup(
+              new mapboxgl.Popup().setHTML(
+                "Name: " +
+                  name +
+                  "<br>" +
+                  "City: " +
+                  city +
+                  "<br>" +
+                  "Price: " +
+                  price +
+                  "<br>" +
+                  "Phone: " +
+                  phone +
+                  "<br>" +
+                  '<img width="150" height="150" src="KinneretBeach.jpg"/>'
+              )
+            )
+            .addTo(map);
+        });
+
+        var dbLoftPopArt = ref(database, "hotels/" + "Loft pop art tlv");
+        onValue(dbLoftPopArt, (snapshot) => {
+          const data = snapshot.val();
+          var price = data.Price;
+          var name = data.Name;
+          var city = data.City;
+          var phone = data.Telephone;
+
+          const newMark = new mapboxgl.Marker()
+            .setLngLat([34.7818, 32.0853])
+            .setPopup(
+              new mapboxgl.Popup().setHTML(
+                "Name: " +
+                  name +
+                  "<br>" +
+                  "City: " +
+                  city +
+                  "<br>" +
+                  "Price: " +
+                  price +
+                  "<br>" +
+                  "Phone: " +
+                  phone +
+                  "<br>" +
+                  '<img width="150" height="150" src="LoftPopArtTlv.jpg"/>'
+              )
+            )
+            .addTo(map);
+        });
+
+        var dbTheOdette = ref(database, "hotels/" + "The Odette");
+        onValue(dbTheOdette, (snapshot) => {
+          const data = snapshot.val();
+          var price = data.Price;
+          var name = data.Name;
+          var city = data.City;
+          var phone = data.Telephone;
+
+          const newMark = new mapboxgl.Marker()
+            .setLngLat([35.2137, 31.7683])
+            .setPopup(
+              new mapboxgl.Popup().setHTML(
+                "Name: " +
+                  name +
+                  "<br>" +
+                  "City: " +
+                  city +
+                  "<br>" +
+                  "Price: " +
+                  price +
+                  "<br>" +
+                  "Phone: " +
+                  phone +
+                  "<br>" +
+                  '<img width="150" height="150" src="TheOdette.jpg"/>'
+              )
+            )
+            .addTo(map);
+        });
+
+        var dbWest = ref(database, "hotels/" + "West all suites");
+        onValue(dbWest, (snapshot) => {
+          const data = snapshot.val();
+          var price = data.Price;
+          var name = data.Name;
+          var city = data.City;
+          var phone = data.Telephone;
+
+          const newMark = new mapboxgl.Marker()
+            .setLngLat([34.6553, 31.8044])
+            .setPopup(
+              new mapboxgl.Popup().setHTML(
+                "Name: " +
+                  name +
+                  "<br>" +
+                  "City: " +
+                  city +
+                  "<br>" +
+                  "Price: " +
+                  price +
+                  "<br>" +
+                  "Phone: " +
+                  phone +
+                  "<br>" +
+                  '<img width="150" height="150" src="West.jpg"/>'
+              )
+            )
+            .addTo(map);
+        });
+      </script>
+    </div>
+  </body>
+</html>

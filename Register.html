@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to Fitnessfinder</title>
+    <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js"></script>
+    <script type="module">
+      import { initRegister, signUp } from "./dbAccess.js";
+      window.onload = function () {
+        initRegister();
+      };
+      window.signUp = signUp;
+    </script>
+  </head>
+  <body>
+    <div class="register" position="absolute">
+      <link rel="stylesheet" href="register.css" />
+      <br /><br /><br /><br /><br /><br /><br />
+      <h1>Registration</h1>
+
+      <input
+        type="text"
+        name="u"
+        placeholder="Name"
+        required="required"
+        id="name"
+      />
+      <input
+        type="text"
+        name="u"
+        placeholder="Family name"
+        required="required"
+        id="familyName"
+      />
+      <input
+        type="email"
+        name="u"
+        placeholder="Email"
+        required="required"
+        id="email"
+      />
+      <input
+        type="password"
+        name="p"
+        placeholder="Password"
+        required="required"
+        id="password"
+      />
+      <br /><br />
+      <button
+        type="submit"
+        id="signUp"
+        class="btn btn-primary btn-block btn-large"
+      >
+        Register
+      </button>
+      <br /><br />
+      <button
+        type="submit"
+        id="moveToLogin"
+        class="btn btn-primary btn-block btn-large"
+      >
+        Login
+      </button>
+    </div>
+  </body>
+</html>
